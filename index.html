@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A responsive Text to Speech Converter designed and developed by Ajmal Abdulrahimzai.">
+    <title>Text to Speech Converter | Ajmal Abdulrahimzai</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+<body>
+    <main class="main-content">
+        <div class="container">
+            <header>Text to Speech Converter</header>
+            <textarea id="text-input" placeholder="Enter text" aria-label="Enter text to convert to speech"></textarea>
+            <button type="button" id="speak-button">
+                <i class="fas fa-volume-high" aria-hidden="true"></i>
+                Convert to Speech
+            </button>
+            <p id="status-message" class="status-message" role="status">Enter your text and click the button.</p>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <p class="footer-credit">
+            Designed and Developed by
+            <a href="https://github.com/ajmalraheemzai-ops?tab=repositories" target="_blank" rel="noopener noreferrer">Ajmal Abdulrahimzai</a>
+        </p>
+        <p class="copyright">&copy; 2026 Ajmal Abdulrahimzai. All rights reserved.</p>
+        <p class="social-heading">Connect with me</p>
+
+        <ul class="social-icons" aria-label="Social media links">
+            <li><a class="social-link facebook" href="https://www.facebook.com/ajmal.abdulrahimzai.1" target="_blank" rel="noopener noreferrer" aria-label="Facebook" title="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a></li>
+            <li><a class="social-link x-twitter" href="https://x.com/Ajmal_raheemzai" target="_blank" rel="noopener noreferrer" aria-label="X" title="X"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></a></li>
+            <li><a class="social-link linkedin" href="https://www.linkedin.com/in/ajmal-abdulrahimzai-9b59002a3" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" title="LinkedIn"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a></li>
+            <li><a class="social-link github" href="https://github.com/ajmalraheemzai-ops?tab=repositories" target="_blank" rel="noopener noreferrer" aria-label="GitHub" title="GitHub"><i class="fab fa-github" aria-hidden="true"></i></a></li>
+            <li><a class="social-link instagram" href="https://www.instagram.com/ajmal_abdulrahimzai" target="_blank" rel="noopener noreferrer" aria-label="Instagram" title="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a></li>
+            <li><a class="social-link tiktok" href="https://www.tiktok.com/@ajmal_abdulrahimzai" target="_blank" rel="noopener noreferrer" aria-label="TikTok" title="TikTok"><i class="fab fa-tiktok" aria-hidden="true"></i></a></li>
+            <li><a class="social-link email" href="mailto:ajmal.abdulrahimzai123@gmail.com" aria-label="Email" title="Email"><i class="fas fa-envelope" aria-hidden="true"></i></a></li>
+            <li><a class="social-link telegram" href="https://t.me/Ajmal_abdulrahimzai" target="_blank" rel="noopener noreferrer" aria-label="Telegram" title="Telegram"><i class="fab fa-telegram-plane" aria-hidden="true"></i></a></li>
+        </ul>
+        <p class="footer-tagline">Built with <span aria-label="love">&hearts;</span> and code.</p>
+    </footer>
+
+    <script>
+        const textInput = document.getElementById("text-input");
+        const speakButton = document.getElementById("speak-button");
+        const statusMessage = document.getElementById("status-message");
+
+        if ("speechSynthesis" in window) {
+            speakButton.addEventListener("click", function () {
+                const text = textInput.value.trim();
+
+                if (!text) {
+                    statusMessage.textContent = "Please enter some text first.";
+                    textInput.focus();
+                    return;
+                }
+
+                window.speechSynthesis.cancel();
+                const speech = new SpeechSynthesisUtterance(text);
+
+                speech.onstart = function () {
+                    statusMessage.textContent = "Speaking...";
+                    speakButton.innerHTML = '<i class="fas fa-volume-high" aria-hidden="true"></i> Speaking...';
+                };
+
+                speech.onend = function () {
+                    statusMessage.textContent = "Speech completed.";
+                    speakButton.innerHTML = '<i class="fas fa-volume-high" aria-hidden="true"></i> Convert to Speech';
+                };
+
+                speech.onerror = function (event) {
+                    if (event.error === "canceled" || event.error === "interrupted") return;
+                    statusMessage.textContent = "Unable to play speech. Please try again.";
+                    speakButton.innerHTML = '<i class="fas fa-volume-high" aria-hidden="true"></i> Convert to Speech';
+                };
+
+                window.speechSynthesis.speak(speech);
+            });
+        } else {
+            speakButton.disabled = true;
+            statusMessage.textContent = "Your browser does not support text-to-speech.";
+        }
+    </script>
+</body>
+</html>

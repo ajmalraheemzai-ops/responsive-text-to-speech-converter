@@ -1,0 +1,322 @@
+/* Import Google Font - Poppins */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    background: #87a5f8;
+    color: #333;
+}
+
+/* Main Content */
+.main-content {
+    flex: 1;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 35px 16px;
+}
+
+/* Converter Container */
+.container {
+    position: relative;
+    width: 100%;
+    max-width: 350px;
+    padding: 20px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+header {
+    font-size: 18px;
+    color: #333;
+    font-weight: 500;
+    text-align: center;
+    line-height: 1.6;
+}
+
+/* Text Area */
+textarea {
+    display: block;
+    width: 100%;
+    height: 180px;
+    margin: 20px 0;
+    padding: 10px 15px;
+    resize: vertical;
+    outline: none;
+    border: 1px solid #aaa;
+    border-radius: 8px;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #333;
+    background: #fff;
+    overflow-wrap: anywhere;
+    transition: border-color 0.3s ease;
+}
+
+textarea:focus {
+    border-color: #4070f4;
+    box-shadow: 0 0 0 3px rgba(64, 112, 244, 0.12);
+}
+
+textarea::placeholder {
+    color: #888;
+}
+
+/* Convert Button */
+button {
+    width: 100%;
+    min-height: 48px;
+    padding: 14px 10px;
+    border: none;
+    border-radius: 8px;
+    color: #fff;
+    background: #6e93f7;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+    background: #4070f4;
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+button:focus-visible,
+a:focus-visible {
+    outline: 3px solid #234db8;
+    outline-offset: 3px;
+}
+
+button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Status Message */
+.status-message {
+    margin-top: 12px;
+    min-height: 20px;
+    font-size: 12px;
+    text-align: center;
+    line-height: 1.6;
+    color: #666;
+    overflow-wrap: anywhere;
+}
+
+/* Footer */
+.site-footer {
+    width: 100%;
+    padding: 25px 15px 20px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.96);
+    border-top: 1px solid rgba(64, 112, 244, 0.15);
+}
+
+.footer-credit {
+    font-size: 14px;
+    line-height: 1.8;
+    color: #333;
+    overflow-wrap: anywhere;
+}
+
+.footer-credit a {
+    color: #4070f4;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.footer-credit a:hover {
+    text-decoration: underline;
+}
+
+.copyright {
+    margin-top: 5px;
+    font-size: 12px;
+    color: #777;
+    line-height: 1.8;
+}
+
+.social-heading {
+    margin: 15px 0 12px;
+    color: #555;
+    font-size: 13px;
+}
+
+/* Social Media Icons */
+.social-icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    width: 100%;
+    max-width: 420px;
+    margin: 0 auto;
+    padding: 0;
+    list-style: none;
+}
+
+.social-icons li {
+    display: flex;
+    flex: 0 0 auto;
+}
+
+.social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: #f0f3fa;
+    color: #444;
+    font-size: 17px;
+    text-decoration: none;
+    transition: transform 0.25s ease, color 0.25s ease, background 0.25s ease;
+}
+
+.social-link:hover {
+    color: #fff;
+    transform: translateY(-4px);
+}
+
+.facebook:hover { background: #1877f2; }
+.x-twitter:hover { background: #000; }
+.linkedin:hover { background: #0a66c2; }
+.github:hover { background: #24292f; }
+.instagram:hover { background: #e1306c; }
+.tiktok:hover { background: #111; }
+.email:hover { background: #d93025; }
+.telegram:hover { background: #229ed9; }
+
+/* Footer Tagline */
+.footer-tagline {
+    margin-top: 17px;
+    font-size: 12px;
+    color: #888;
+}
+
+.footer-tagline span {
+    color: #e63946;
+}
+
+/* Tablets */
+@media (max-width: 768px) {
+    .main-content {
+        padding: 28px 18px;
+    }
+
+    .site-footer {
+        padding: 23px 12px 18px;
+    }
+}
+
+/* Mobile Phones */
+@media (max-width: 480px) {
+    .main-content {
+        padding: 24px 14px;
+    }
+
+    .container {
+        max-width: 100%;
+        padding: 20px;
+    }
+
+    header {
+        font-size: 17px;
+    }
+
+    textarea {
+        height: 170px;
+        font-size: 16px;
+    }
+
+    button {
+        min-height: 48px;
+        font-size: 14px;
+    }
+
+    .site-footer {
+        padding: 22px 10px 18px;
+    }
+
+    .footer-credit {
+        font-size: 13px;
+    }
+
+    .social-icons {
+        gap: 10px;
+    }
+
+    .social-link {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+    }
+}
+
+/* Small Phones */
+@media (max-width: 320px) {
+    .main-content {
+        padding: 18px 10px;
+    }
+
+    .container {
+        padding: 16px;
+    }
+
+    header {
+        font-size: 16px;
+    }
+
+    textarea {
+        height: 150px;
+        padding: 10px;
+    }
+
+    .social-icons {
+        gap: 8px;
+    }
+
+    .social-link {
+        width: 36px;
+        height: 36px;
+        font-size: 15px;
+    }
+
+    .copyright {
+        font-size: 11px;
+    }
+}
+
+/* Reduced Motion Accessibility */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+        animation: none !important;
+    }
+}
